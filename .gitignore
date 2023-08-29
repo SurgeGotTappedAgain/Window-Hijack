@@ -38,3 +38,9 @@ external-hijack/external-hijack/x64/Release/vc143.pdb
 external-hijack/external-hijack/x64/Release/vcpkg.applocal.log
 external-hijack/x64/Release/external-hijack.exe
 external-hijack/x64/Release/external-hijack.pdb
+external-hijack/.vs/external-hijack/FileContentIndex/4b730d7e-e5a7-49fc-accf-c899939d48f0.vsidx
+external-hijack/.vs/external-hijack/v17/ipch/AutoPCH/292dce2610d24da7/IMGUI.ipch
+external-hijack/external-hijack/imgui.ini
+*.ini
+*.vsidx
+*.ini

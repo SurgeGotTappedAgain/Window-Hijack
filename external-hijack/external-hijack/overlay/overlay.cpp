@@ -108,12 +108,13 @@ Overlay::~Overlay()
 
 const void Overlay::Render(float width, float height)
 {
-	draw_list = ImGui::GetBackgroundDrawList();
-
 	InputHandler();
 
-	if (menu)
+	if (menu) {
 		ImGui::ShowDemoWindow();
+	}
+
+	/* esp visuals etc... */
 }
 
 bool Overlay::MessageLoop()
@@ -147,6 +148,7 @@ bool Overlay::MessageLoop()
 				device_context->ClearRenderTargetView(render_target_view, (float*)&clear_clr);
 
 				ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+
 				swap_chain->Present(1, 0);
 			}
 		}
@@ -160,6 +162,7 @@ void Overlay::InputHandler()
 
 	POINT p{};
 	GetCursorPos(&p);
+
 	io.MousePos = ImVec2((float)p.x, (float)p.y);
 
 	io.MouseDown[0] = GetAsyncKeyState(VK_LBUTTON) & 0x8000;

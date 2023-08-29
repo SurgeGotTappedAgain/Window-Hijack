@@ -3,6 +3,11 @@
 /* install overwolf here https://download.overwolf.com/install/Download?Channel=web_dl_btn&utm_content=web_app_store&guid=03f373c7-2ae2-4af3-9491-14865eed9189 */
 /* navigate to settings and enable overlay for desired game */
 
+/* todo list:
+- resize buffer (scale menu based on overlay size)
+- fix menu flicker when alt tabbed 
+*/
+
 int main()
 {
 	try
