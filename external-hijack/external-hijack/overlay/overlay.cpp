@@ -26,8 +26,9 @@ bool Overlay::InitDevice()
 
 	InitRenderTarget();
 
-	ShowWindow(window_handle, SW_SHOWNORMAL);
+	ShowWindow(window_handle, SW_SHOW);
 	UpdateWindow(window_handle);
+
 	return true;
 }
 
@@ -85,12 +86,12 @@ void Overlay::InitImGui()
 	ImGui_ImplDX11_Init(d3d_device, device_context);
 }
 
-Overlay::Overlay()
+Overlay::Overlay(HWND target_window)
 {
 	game_screen_width = GetSystemMetrics(SM_CXSCREEN);
 	game_screen_height = GetSystemMetrics(SM_CYSCREEN);
 
-	window_handle = FindWindowA("OOPO_WINDOWS_CLASS", "ow overlay");
+	window_handle = target_window;
 	if (!window_handle)
 		return;
 
@@ -113,8 +114,6 @@ const void Overlay::Render(float width, float height)
 	if (menu) {
 		ImGui::ShowDemoWindow();
 	}
-
-	/* esp visuals etc... */
 }
 
 bool Overlay::MessageLoop()

@@ -5,8 +5,6 @@ class Overlay
 private:
 
 	HWND window_handle;
-	WNDCLASSEX window_class;
-
 	ID3D11Device* d3d_device;
 	ID3D11DeviceContext* device_context;
 	IDXGISwapChain* swap_chain;
@@ -33,7 +31,7 @@ public:
 	void InputHandler();
 	bool MessageLoop();
 
-	Overlay();
+	Overlay(HWND target_window);
 	~Overlay();
 };
 
