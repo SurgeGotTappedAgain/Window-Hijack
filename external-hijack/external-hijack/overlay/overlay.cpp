@@ -78,7 +78,7 @@ void Overlay::InitImGui()
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 
-	/* styles & fonts here*/
+	/* styles & fonts here */
 	ImGuiIO& io = ImGui::GetIO();
 
 	ImGui_ImplWin32_Init(window_handle);
@@ -109,6 +109,7 @@ Overlay::~Overlay()
 const void Overlay::Render(float width, float height)
 {
 	draw_list = ImGui::GetBackgroundDrawList();
+
 	InputHandler();
 
 	if (menu)

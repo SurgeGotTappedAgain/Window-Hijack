@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <comdef.h>
 #include <corecrt.h>
 #include <stdarg.h>
