@@ -111,6 +111,8 @@ const void Overlay::Render()
 	if (input_manager.toggle_menu) {
 		ImGui::ShowDemoWindow();
 	}
+
+	ImGui::GetBackgroundDrawList()->AddText(ImVec2(10, 10), ImColor(255, 255, 255, 255), "test");
 }
 
 bool Overlay::MessageLoop()

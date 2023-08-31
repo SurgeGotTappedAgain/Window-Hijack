@@ -61,15 +61,22 @@ LRESULT CALLBACK Input::MouseCallback(int nCode, WPARAM wParam, LPARAM lParam)
 
 void Input::SetHook()
 {
-    if (!(hook = SetWindowsHookExA(WH_KEYBOARD_LL, KeyboardCallback, NULL, 0))) {
-        ExceptionManger::Error("Failed WH_KEYBOARD_LL");
-    }
-    if (!(hook = SetWindowsHookExA(WH_MOUSE_LL, MouseCallback, NULL, 0))) {
-        ExceptionManger::Error("Failed WH_MOUSE_LL");
+    static bool hook_set = false;
+
+    if (!hook_set) 
+    {
+        if (!(keyboard_hook = SetWindowsHookExA(WH_KEYBOARD_LL, KeyboardCallback, NULL, 0))) {
+            ExceptionManger::Error("Failed WH_KEYBOARD_LL");
+        }
+        if (!(mouse_hook = SetWindowsHookExA(WH_MOUSE_LL, MouseCallback, NULL, 0))) {
+            ExceptionManger::Error("Failed WH_MOUSE_LL");
+        }
+        hook_set = true;
     }
 }
 
 void Input::ReleaseHook()
 {
-    UnhookWindowsHookEx(hook);
+    UnhookWindowsHookEx(keyboard_hook);
+    UnhookWindowsHookEx(mouse_hook);
 }

@@ -4,8 +4,8 @@ class Input
 {
 private:
 
-	HHOOK hook;
-	KBDLLHOOKSTRUCT hook_struct;
+	HHOOK keyboard_hook;
+	HHOOK mouse_hook;
 
 public:
 
