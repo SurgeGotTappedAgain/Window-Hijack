@@ -44,3 +44,4 @@ external-hijack/external-hijack/imgui.ini
 *.ini
 *.vsidx
 *.ini
+*.ipch

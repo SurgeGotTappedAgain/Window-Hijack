@@ -25,4 +25,6 @@
 #include "imgui_impl_dx11.h"
 #include "imgui_internal.h"
 
+#include "globals.hpp"
+#include "input.hpp"
 #include "overlay.hpp"

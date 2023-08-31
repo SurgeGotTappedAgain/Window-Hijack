@@ -88,9 +88,6 @@ void Overlay::InitImGui()
 
 Overlay::Overlay(HWND target_window)
 {
-	game_screen_width = GetSystemMetrics(SM_CXSCREEN);
-	game_screen_height = GetSystemMetrics(SM_CYSCREEN);
-
 	window_handle = target_window;
 	if (!window_handle)
 		return;
@@ -107,11 +104,11 @@ Overlay::~Overlay()
 	DestroyDevice();
 }
 
-const void Overlay::Render(float width, float height)
+const void Overlay::Render()
 {
 	InputHandler();
 
-	if (menu) {
+	if (input_manager.toggle_menu) {
 		ImGui::ShowDemoWindow();
 	}
 }
@@ -140,7 +137,7 @@ bool Overlay::MessageLoop()
 				ImGui_ImplWin32_NewFrame();
 				ImGui::NewFrame();
 
-				Render(game_screen_width, game_screen_height);
+				Render();
 
 				ImGui::Render();
 				device_context->OMSetRenderTargets(1, &render_target_view, NULL);
@@ -157,19 +154,12 @@ bool Overlay::MessageLoop()
 
 void Overlay::InputHandler()
 {
+	Input input;
+	input.SetHook();
+
 	ImGuiIO& io = ImGui::GetIO();
 
-	POINT p{};
-	GetCursorPos(&p);
-
-	io.MousePos = ImVec2((float)p.x, (float)p.y);
-
-	io.MouseDown[0] = GetAsyncKeyState(VK_LBUTTON) & 0x8000;
-	io.MouseDown[1] = GetAsyncKeyState(VK_RBUTTON) & 0x8000;
-
-	if (GetAsyncKeyState(VK_INSERT) & 1)
-		menu = !menu;
-
-	if (GetAsyncKeyState(VK_END) & 1)
-		DestroyWindow();
+	io.MousePos = input_manager.mouse_position;
+	io.MouseDown[0] = input_manager.left_click;
+	io.MouseDown[1] = input_manager.right_click;
 }

@@ -13,6 +13,9 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{c4a30f9d-0def-4d68-8f49-83928eaeab97}</UniqueIdentifier>
     </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{19f0ac13-b1e0-4434-8e52-fdd9094c3d75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="threads\threads.cpp">
@@ -41,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="input\input.cpp">
+      <Filter>input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="input\input.hpp">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities\globals.hpp">
+      <Filter>utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

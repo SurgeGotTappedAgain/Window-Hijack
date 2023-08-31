@@ -11,8 +11,7 @@ private:
 	ID3D11RenderTargetView* render_target_view;
 	ImDrawList* draw_list;
 
-	int			game_screen_width, game_screen_height;
-	bool		menu = false;
+	int	game_screen_width, game_screen_height;
 
 public:
 
@@ -26,30 +25,11 @@ public:
 
 	void DestroyWindow();
 
-	const void Render(float width, float height);
+	const void Render();
 
 	void InputHandler();
 	bool MessageLoop();
 
 	Overlay(HWND target_window);
 	~Overlay();
-};
-
-class ExceptionManger : public std::exception
-{
-public:
-	ExceptionManger(const std::string& message) : message(message) {}
-
-	virtual const char* what() const noexcept override
-	{
-		return message.c_str();
-	}
-
-	static void Error(const std::string& errorMessage)
-	{
-		throw ExceptionManger(errorMessage);
-	}
-
-private:
-	std::string message;
 };
